@@ -3,7 +3,7 @@ from transformers import pipeline, T5ForConditionalGeneration, T5Tokenizer
 
 @st.cache_resource
 def load_sentiment_model():
-    return pipeline("/sentiment-analysis")
+    return pipeline("sentiment-analysis")
 
 @st.cache_resource
 def load_translator_model():
@@ -53,8 +53,8 @@ if option == "Wydźwięk emocjonalny tekstu (eng)":
                     st.metric("Wynik", label, f"{score:.2%}")
                 except Exception as e:
                     st.error(f"Wystąpił błąd podczas analizy: {e}")
-    else:
-        st.warning("Proszę wprowadzić tekst do oceny przez model.")
+        else:
+            st.warning("Proszę wprowadzić tekst do oceny przez model.")
 
 elif option == "Tłumaczenie języka angielskiego na niemiecki (eng -> de)":
     text = st.text_area("Wpisz tekst po angielsku do przetłumaczenia:")
